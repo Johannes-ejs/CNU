@@ -1,21 +1,20 @@
 import numpy as np
-from scipy.misc import derivative
-
 
 
 def main():
     n=3
+    m=4
     A = np.zeros((n,n))
-    A=np.array([[1,2,3],[2,3,4],[3,4,5]])
-    print_(A,n)
+    A=np.array([[1,2,3,5],[2,3,4,6],[3,4,5,6]])
+    print_(A,n,m)
     print(" ---------")
     A=escalona(A,n)
-    print_(A,n)
+    print_(A,n,m)
 
-def print_(A,n):
+def print_(A,n,m):
     print('')
     for i in range(n):
-        for j in range(n):
+        for j in range(m):
             if(A[i][j]>=0):
                 print('',A[i][j],' ',end='')
             else:
@@ -29,9 +28,8 @@ def troca_linha(A,i,j):
     print_(A,3)
     return A
 
-def mult_linha(A,i,x,n):
+def mult_linha(A,i,x,):
     A[i]=x*A[i]
-    print_(A,n)
     return A
 
 def comb_linha(A,i,j,x):
@@ -51,6 +49,7 @@ def escalona(A,n):
         if (passe==0) :
             for k in range(i+1,n):
                 A=comb_linha(A,k,i,-A[k][i]/A[i][i])
-                print_(A,n)
     return A
+
+
 main()
